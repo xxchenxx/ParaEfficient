@@ -31,7 +31,7 @@ from torch.utils.data.distributed import DistributedSampler
 from tqdm import tqdm, trange
 import sklearn
 
-from transformers import (
+from transformersdiffpruning import (
     WEIGHTS_NAME,
     AdamW,
     AlbertConfig,
@@ -63,10 +63,10 @@ from transformers import (
     AutoModelForSequenceClassification,
     get_linear_schedule_with_warmup,
 )
-from transformers import glue_compute_metrics as compute_metrics
-from transformers import glue_convert_examples_to_features as convert_examples_to_features
-from transformers import glue_output_modes as output_modes
-from transformers import glue_processors as processors
+from transformersdiffpruning import glue_compute_metrics as compute_metrics
+from transformersdiffpruning import glue_convert_examples_to_features as convert_examples_to_features
+from transformersdiffpruning import glue_output_modes as output_modes
+from transformersdiffpruning import glue_processors as processors
 
 
 try:

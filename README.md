@@ -72,7 +72,7 @@ EXP_NAME=cola
 BASE_DIR=$(pwd)
 LOCAL_DATA_DIR=${BASE_DIR}/glue_data
 LOCAL_CKPT_DIR=${BASE_DIR}/logs/${EXP_NAME}
-GPU=0
+GPU=1
 TASK=cola
 DATA=CoLA
 mkdir -p ${LOCAL_CKPT_DIR}
