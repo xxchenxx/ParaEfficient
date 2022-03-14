@@ -102,3 +102,10 @@ CUDA_VISIBLE_DEVICES=${GPU} python ${BASE_DIR}/examples/run_glue_fixmask_finetun
 
 
 ```
+
+## P-tuning-v2
+
+```{r}
+cd P-tuning-v2
+bash run_script/run_rte_bert.sh 
+```
