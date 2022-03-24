@@ -22,7 +22,7 @@ from typing import List, Optional, Union
 import tqdm
 
 from filelock import FileLock
-from transformers import (
+from transformerslora import (
     BartTokenizer,
     BartTokenizerFast,
     DataProcessor,
@@ -260,7 +260,7 @@ class HansProcessor(DataProcessor):
     def get_labels(self):
         """See base class.
         Note that we follow the standard three labels for MNLI
-        (see :class:`~transformers.data.processors.utils.MnliProcessor`)
+        (see :class:`~transformerslora.data.processors.utils.MnliProcessor`)
         but the HANS evaluation groups `contradiction` and `neutral` into `non-entailment` (label 0) while
         `entailment` is label 1."""
         return ["contradiction", "entailment", "neutral"]

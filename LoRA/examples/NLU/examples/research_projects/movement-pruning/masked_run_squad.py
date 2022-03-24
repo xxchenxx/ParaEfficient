@@ -32,7 +32,7 @@ from torch.utils.data.distributed import DistributedSampler
 from tqdm import tqdm, trange
 
 from emmental import MaskedBertConfig, MaskedBertForQuestionAnswering
-from transformers import (
+from transformerslora import (
     WEIGHTS_NAME,
     AdamW,
     BertConfig,
@@ -41,12 +41,12 @@ from transformers import (
     get_linear_schedule_with_warmup,
     squad_convert_examples_to_features,
 )
-from transformers.data.metrics.squad_metrics import (
+from transformerslora.data.metrics.squad_metrics import (
     compute_predictions_log_probs,
     compute_predictions_logits,
     squad_evaluate,
 )
-from transformers.data.processors.squad import SquadResult, SquadV1Processor, SquadV2Processor
+from transformerslora.data.processors.squad import SquadResult, SquadV1Processor, SquadV2Processor
 
 
 try:
@@ -295,7 +295,7 @@ def train(args, train_dataset, model, tokenizer, teacher=None):
                 inputs["threshold"] = threshold
 
             outputs = model(**inputs)
-            # model outputs are always tuple in transformers (see doc)
+            # model outputs are always tuple in transformerslora (see doc)
             loss, start_logits_stu, end_logits_stu = outputs
 
             # Distillation loss

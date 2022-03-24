@@ -20,8 +20,8 @@ import torch
 import torch.nn as nn
 from torch.nn import CrossEntropyLoss, MSELoss
 
-from transformers.file_utils import add_start_docstrings, add_start_docstrings_to_model_forward
-from transformers.models.albert.modeling_albert import (
+from transformerslora.file_utils import add_start_docstrings, add_start_docstrings_to_model_forward
+from transformerslora.models.albert.modeling_albert import (
     ALBERT_INPUTS_DOCSTRING,
     ALBERT_START_DOCSTRING,
     AlbertModel,
@@ -102,7 +102,7 @@ class AlbertModelWithPabee(AlbertModel):
     ):
         r"""
         Return:
-            :obj:`tuple(torch.FloatTensor)` comprising various elements depending on the configuration (:class:`~transformers.AlbertConfig`) and inputs:
+            :obj:`tuple(torch.FloatTensor)` comprising various elements depending on the configuration (:class:`~transformerslora.AlbertConfig`) and inputs:
             last_hidden_state (:obj:`torch.FloatTensor` of shape :obj:`(batch_size, sequence_length, hidden_size)`):
                 Sequence of hidden-states at the output of the last layer of the model.
             pooler_output (:obj:`torch.FloatTensor`: of shape :obj:`(batch_size, hidden_size)`):
@@ -249,7 +249,7 @@ class AlbertForSequenceClassificationWithPabee(AlbertPreTrainedModel):
                 If ``config.num_labels > 1`` a classification loss is computed (Cross-Entropy).
 
         Returns:
-            :obj:`tuple(torch.FloatTensor)` comprising various elements depending on the configuration (:class:`~transformers.AlbertConfig`) and inputs:
+            :obj:`tuple(torch.FloatTensor)` comprising various elements depending on the configuration (:class:`~transformerslora.AlbertConfig`) and inputs:
             loss: (`optional`, returned when ``labels`` is provided) ``torch.FloatTensor`` of shape ``(1,)``:
                 Classification (or regression if config.num_labels==1) loss.
             logits ``torch.FloatTensor`` of shape ``(batch_size, config.num_labels)``
@@ -268,7 +268,7 @@ class AlbertForSequenceClassificationWithPabee(AlbertPreTrainedModel):
 
             Examples::
 
-                from transformers import AlbertTokenizer
+                from transformerslora import AlbertTokenizer
                 from pabee import AlbertForSequenceClassificationWithPabee
                 import torch
 

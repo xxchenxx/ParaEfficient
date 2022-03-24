@@ -15,9 +15,9 @@ from distillation import distill_main
 from finetune import SummarizationModule, main
 from parameterized import parameterized
 from run_eval import generate_summaries_or_translations
-from transformers import AutoConfig, AutoModelForSeq2SeqLM
-from transformers.hf_api import HfApi
-from transformers.testing_utils import CaptureStderr, CaptureStdout, TestCasePlus, require_torch_gpu, slow
+from transformerslora import AutoConfig, AutoModelForSeq2SeqLM
+from transformerslora.hf_api import HfApi
+from transformerslora.testing_utils import CaptureStderr, CaptureStdout, TestCasePlus, require_torch_gpu, slow
 from utils import label_smoothed_nll_loss, lmap, load_json
 
 

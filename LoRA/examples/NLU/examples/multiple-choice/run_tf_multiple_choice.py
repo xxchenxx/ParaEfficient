@@ -24,7 +24,7 @@ from typing import Dict, Optional
 
 import numpy as np
 
-from transformers import (
+from transformerslora import (
     AutoConfig,
     AutoTokenizer,
     EvalPrediction,
@@ -34,7 +34,7 @@ from transformers import (
     TFTrainingArguments,
     set_seed,
 )
-from transformers.utils import logging as hf_logging
+from transformerslora.utils import logging as hf_logging
 from utils_multiple_choice import Split, TFMultipleChoiceDataset, processors
 
 

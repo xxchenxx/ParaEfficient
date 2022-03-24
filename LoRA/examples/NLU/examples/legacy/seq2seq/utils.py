@@ -33,9 +33,9 @@ from torch import nn
 from torch.utils.data import Dataset, Sampler
 
 from sentence_splitter import add_newline_to_end_of_each_sentence
-from transformers import BartTokenizer, EvalPrediction, PreTrainedTokenizer, T5Tokenizer
-from transformers.file_utils import cached_property
-from transformers.models.bart.modeling_bart import shift_tokens_right
+from transformerslora import BartTokenizer, EvalPrediction, PreTrainedTokenizer, T5Tokenizer
+from transformerslora.file_utils import cached_property
+from transformerslora.models.bart.modeling_bart import shift_tokens_right
 
 
 try:

@@ -14,7 +14,7 @@
 """
 Once a model has been fine-pruned, the weights that are masked during the forward pass can be pruned once for all.
 For instance, once the a model from the :class:`~emmental.MaskedBertForSequenceClassification` is trained, it can be saved (and then loaded)
-as a standard :class:`~transformers.BertForSequenceClassification`.
+as a standard :class:`~transformerslora.BertForSequenceClassification`.
 """
 
 import argparse

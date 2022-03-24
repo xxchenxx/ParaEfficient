@@ -16,7 +16,7 @@
 """Masked Version of BERT. It replaces the `torch.nn.Linear` layers with
 :class:`~emmental.MaskedLinear` and add an additional parameters in the forward pass to
 compute the adaptive mask.
-Built on top of `transformers.models.bert.modeling_bert`"""
+Built on top of `transformerslora.models.bert.modeling_bert`"""
 
 
 import logging
@@ -28,9 +28,9 @@ from torch.nn import CrossEntropyLoss, MSELoss
 
 from emmental import MaskedBertConfig
 from emmental.modules import MaskedLinear
-from transformers.file_utils import add_start_docstrings, add_start_docstrings_to_model_forward
-from transformers.modeling_utils import PreTrainedModel, prune_linear_layer
-from transformers.models.bert.modeling_bert import ACT2FN, BertLayerNorm, load_tf_weights_in_bert
+from transformerslora.file_utils import add_start_docstrings, add_start_docstrings_to_model_forward
+from transformerslora.modeling_utils import PreTrainedModel, prune_linear_layer
+from transformerslora.models.bert.modeling_bert import ACT2FN, BertLayerNorm, load_tf_weights_in_bert
 
 
 logger = logging.getLogger(__name__)
@@ -413,7 +413,7 @@ MASKED_BERT_START_DOCSTRING = r"""
     Parameters:
         config (:class:`~emmental.MaskedBertConfig`): Model configuration class with all the parameters of the model.
             Initializing with a config file does not load the weights associated with the model, only the configuration.
-            Check out the :meth:`~transformers.PreTrainedModel.from_pretrained` method to load the model weights.
+            Check out the :meth:`~transformerslora.PreTrainedModel.from_pretrained` method to load the model weights.
 """
 
 MASKED_BERT_INPUTS_DOCSTRING = r"""
@@ -421,9 +421,9 @@ MASKED_BERT_INPUTS_DOCSTRING = r"""
         input_ids (:obj:`torch.LongTensor` of shape :obj:`(batch_size, sequence_length)`):
             Indices of input sequence tokens in the vocabulary.
 
-            Indices can be obtained using :class:`transformers.BertTokenizer`.
-            See :func:`transformers.PreTrainedTokenizer.encode` and
-            :func:`transformers.PreTrainedTokenizer.__call__` for details.
+            Indices can be obtained using :class:`transformerslora.BertTokenizer`.
+            See :func:`transformerslora.PreTrainedTokenizer.encode` and
+            :func:`transformerslora.PreTrainedTokenizer.__call__` for details.
 
             `What are input IDs? <../glossary.html#input-ids>`__
         attention_mask (:obj:`torch.FloatTensor` of shape :obj:`(batch_size, sequence_length)`, `optional`):
@@ -468,7 +468,7 @@ MASKED_BERT_INPUTS_DOCSTRING = r"""
 )
 class MaskedBertModel(MaskedBertPreTrainedModel):
     """
-    The `MaskedBertModel` class replicates the :class:`~transformers.BertModel` class
+    The `MaskedBertModel` class replicates the :class:`~transformerslora.BertModel` class
     and adds specific inputs to compute the adaptive mask on the fly.
     Note that we freeze the embeddings modules from their pre-trained values.
     """

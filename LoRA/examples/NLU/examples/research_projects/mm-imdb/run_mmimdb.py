@@ -31,8 +31,8 @@ from torch.utils.data import DataLoader, RandomSampler, SequentialSampler
 from torch.utils.data.distributed import DistributedSampler
 from tqdm import tqdm, trange
 
-import transformers
-from transformers import (
+import transformerslora
+from transformerslora import (
     WEIGHTS_NAME,
     AdamW,
     AutoConfig,
@@ -42,7 +42,7 @@ from transformers import (
     MMBTForClassification,
     get_linear_schedule_with_warmup,
 )
-from transformers.trainer_utils import is_main_process
+from transformerslora.trainer_utils import is_main_process
 from utils_mmimdb import ImageEncoder, JsonlDataset, collate_fn, get_image_transforms, get_mmimdb_labels
 
 
@@ -149,7 +149,7 @@ def train(args, train_dataset, model, tokenizer, criterion):
                 "modal_end_tokens": batch[4],
             }
             outputs = model(**inputs)
-            logits = outputs[0]  # model outputs are always tuple in transformers (see doc)
+            logits = outputs[0]  # model outputs are always tuple in transformerslora (see doc)
             loss = criterion(logits, labels)
 
             if args.n_gpu > 1:
@@ -274,7 +274,7 @@ def evaluate(args, model, tokenizer, criterion, prefix=""):
                 "modal_end_tokens": batch[4],
             }
             outputs = model(**inputs)
-            logits = outputs[0]  # model outputs are always tuple in transformers (see doc)
+            logits = outputs[0]  # model outputs are always tuple in transformerslora (see doc)
             tmp_eval_loss = criterion(logits, labels)
             eval_loss += tmp_eval_loss.mean().item()
         nb_eval_steps += 1
@@ -478,11 +478,11 @@ def main():
         bool(args.local_rank != -1),
         args.fp16,
     )
-    # Set the verbosity to info of the Transformers logger (on main process only):
+    # Set the verbosity to info of the transformerslora logger (on main process only):
     if is_main_process(args.local_rank):
-        transformers.utils.logging.set_verbosity_info()
-        transformers.utils.logging.enable_default_handler()
-        transformers.utils.logging.enable_explicit_format()
+        transformerslora.utils.logging.set_verbosity_info()
+        transformerslora.utils.logging.enable_default_handler()
+        transformerslora.utils.logging.enable_explicit_format()
     # Set seed
     set_seed(args)
 

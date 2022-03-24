@@ -18,9 +18,9 @@ import sys
 import unittest
 from unittest.mock import patch
 
-from transformers.file_utils import is_apex_available
-from transformers.integrations import is_fairscale_available
-from transformers.testing_utils import (
+from transformerslora.file_utils import is_apex_available
+from transformerslora.integrations import is_fairscale_available
+from transformerslora.testing_utils import (
     TestCasePlus,
     execute_subprocess_async,
     get_gpu_count,
@@ -29,8 +29,8 @@ from transformers.testing_utils import (
     require_torch_non_multi_gpu,
     slow,
 )
-from transformers.trainer_callback import TrainerState
-from transformers.trainer_utils import set_seed
+from transformerslora.trainer_callback import TrainerState
+from transformerslora.trainer_utils import set_seed
 
 
 bindir = os.path.abspath(os.path.dirname(__file__))

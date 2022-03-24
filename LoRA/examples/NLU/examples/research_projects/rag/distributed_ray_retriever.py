@@ -2,9 +2,9 @@ import logging
 import random
 
 import ray
-from transformers import RagConfig, RagRetriever, RagTokenizer
-from transformers.file_utils import requires_datasets, requires_faiss
-from transformers.models.rag.retrieval_rag import CustomHFIndex
+from transformerslora import RagConfig, RagRetriever, RagTokenizer
+from transformerslora.file_utils import requires_datasets, requires_faiss
+from transformerslora.models.rag.retrieval_rag import CustomHFIndex
 
 
 logger = logging.getLogger(__name__)
@@ -48,16 +48,16 @@ class RagRayDistributedRetriever(RagRetriever):
     process as the training worker and Ray will not be used.
 
     Args:
-        config (:class:`~transformers.RagConfig`):
+        config (:class:`~transformerslora.RagConfig`):
             The configuration of the RAG model this Retriever is used with. Contains parameters indicating which ``Index`` to build.
-        question_encoder_tokenizer (:class:`~transformers.PretrainedTokenizer`):
+        question_encoder_tokenizer (:class:`~transformerslora.PretrainedTokenizer`):
             The tokenizer that was used to tokenize the question.
             It is used to decode the question and then use the generator_tokenizer.
-        generator_tokenizer (:class:`~transformers.PretrainedTokenizer`):
+        generator_tokenizer (:class:`~transformerslora.PretrainedTokenizer`):
             The tokenizer used for the generator part of the RagModel.
         retrieval_workers (:obj:`List[ray.ActorClass(RayRetriever)]`): A list of already initialized `RayRetriever` actors.
             These actor classes run on remote processes and are responsible for performing the index lookup.
-        index (:class:`~transformers.retrieval_rag.Index`, optional, defaults to the one defined by the configuration):
+        index (:class:`~transformerslora.retrieval_rag.Index`, optional, defaults to the one defined by the configuration):
             If specified, use this index instead of the one built using the configuration
     """
 

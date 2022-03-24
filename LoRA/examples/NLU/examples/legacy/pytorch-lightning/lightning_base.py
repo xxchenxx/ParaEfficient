@@ -7,7 +7,7 @@ from typing import Any, Dict
 import pytorch_lightning as pl
 from pytorch_lightning.utilities import rank_zero_info
 
-from transformers import (
+from transformerslora import (
     AdamW,
     AutoConfig,
     AutoModel,
@@ -21,14 +21,14 @@ from transformers import (
     PretrainedConfig,
     PreTrainedTokenizer,
 )
-from transformers.optimization import (
+from transformerslora.optimization import (
     Adafactor,
     get_cosine_schedule_with_warmup,
     get_cosine_with_hard_restarts_schedule_with_warmup,
     get_linear_schedule_with_warmup,
     get_polynomial_decay_schedule_with_warmup,
 )
-from transformers.utils.versions import require_version_examples
+from transformerslora.utils.versions import require_version_examples
 
 
 logger = logging.getLogger(__name__)
@@ -47,7 +47,7 @@ MODEL_MODES = {
 }
 
 
-# update this and the import above to support new schedulers from transformers.optimization
+# update this and the import above to support new schedulers from transformerslora.optimization
 arg_to_scheduler = {
     "linear": get_linear_schedule_with_warmup,
     "cosine": get_cosine_schedule_with_warmup,

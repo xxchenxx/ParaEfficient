@@ -31,7 +31,7 @@ from torch.utils.data.distributed import DistributedSampler
 from tqdm import tqdm, trange
 
 from emmental import MaskedBertConfig, MaskedBertForSequenceClassification
-from transformers import (
+from transformerslora import (
     WEIGHTS_NAME,
     AdamW,
     BertConfig,
@@ -39,10 +39,10 @@ from transformers import (
     BertTokenizer,
     get_linear_schedule_with_warmup,
 )
-from transformers import glue_compute_metrics as compute_metrics
-from transformers import glue_convert_examples_to_features as convert_examples_to_features
-from transformers import glue_output_modes as output_modes
-from transformers import glue_processors as processors
+from transformerslora import glue_compute_metrics as compute_metrics
+from transformerslora import glue_convert_examples_to_features as convert_examples_to_features
+from transformerslora import glue_output_modes as output_modes
+from transformerslora import glue_processors as processors
 
 
 try:
@@ -273,7 +273,7 @@ def train(args, train_dataset, model, tokenizer, teacher=None):
                 inputs["threshold"] = threshold
 
             outputs = model(**inputs)
-            loss, logits_stu = outputs  # model outputs are always tuple in transformers (see doc)
+            loss, logits_stu = outputs  # model outputs are always tuple in transformerslora (see doc)
 
             # Distillation loss
             if teacher is not None:

@@ -27,7 +27,7 @@ import torch
 
 from distiller import Distiller
 from lm_seqs_dataset import LmSeqsDataset
-from transformers import (
+from transformerslora import (
     BertConfig,
     BertForMaskedLM,
     BertTokenizer,

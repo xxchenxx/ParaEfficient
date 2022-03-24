@@ -29,10 +29,10 @@ from torch.utils.data import DataLoader, RandomSampler, SequentialSampler, Tenso
 from torch.utils.data.distributed import DistributedSampler
 from tqdm import tqdm, trange
 
-import transformers
+import transformerslora
 from pabee.modeling_pabee_albert import AlbertForSequenceClassificationWithPabee
 from pabee.modeling_pabee_bert import BertForSequenceClassificationWithPabee
-from transformers import (
+from transformerslora import (
     WEIGHTS_NAME,
     AdamW,
     AlbertConfig,
@@ -41,11 +41,11 @@ from transformers import (
     BertTokenizer,
     get_linear_schedule_with_warmup,
 )
-from transformers import glue_compute_metrics as compute_metrics
-from transformers import glue_convert_examples_to_features as convert_examples_to_features
-from transformers import glue_output_modes as output_modes
-from transformers import glue_processors as processors
-from transformers.trainer_utils import is_main_process
+from transformerslora import glue_compute_metrics as compute_metrics
+from transformerslora import glue_convert_examples_to_features as convert_examples_to_features
+from transformerslora import glue_output_modes as output_modes
+from transformerslora import glue_processors as processors
+from transformerslora.trainer_utils import is_main_process
 
 
 try:
@@ -187,7 +187,7 @@ def train(args, train_dataset, model, tokenizer):
             }
             inputs["token_type_ids"] = batch[2]
             outputs = model(**inputs)
-            loss = outputs[0]  # model outputs are always tuple in transformers (see doc)
+            loss = outputs[0]  # model outputs are always tuple in transformerslora (see doc)
 
             if args.n_gpu > 1:
                 loss = loss.mean()  # mean() to average on multi-gpu parallel training
@@ -632,11 +632,11 @@ def main():
         bool(args.local_rank != -1),
         args.fp16,
     )
-    # Set the verbosity to info of the Transformers logger (on main process only):
+    # Set the verbosity to info of the transformerslora logger (on main process only):
     if is_main_process(args.local_rank):
-        transformers.utils.logging.set_verbosity_info()
-        transformers.utils.logging.enable_default_handler()
-        transformers.utils.logging.enable_explicit_format()
+        transformerslora.utils.logging.set_verbosity_info()
+        transformerslora.utils.logging.enable_default_handler()
+        transformerslora.utils.logging.enable_explicit_format()
     # Set seed
     set_seed(args)
 

@@ -29,7 +29,7 @@ import time
 
 import torch
 
-from transformers import TransfoXLCorpus, TransfoXLLMHeadModel
+from transformerslora import TransfoXLCorpus, TransfoXLLMHeadModel
 
 
 logging.basicConfig(

@@ -13,13 +13,13 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-""" Masked BERT model configuration. It replicates the class `~transformers.BertConfig`
+""" Masked BERT model configuration. It replicates the class `~transformerslora.BertConfig`
 and adapts it to the specificities of MaskedBert (`pruning_method`, `mask_init` and `mask_scale`."""
 
 
 import logging
 
-from transformers.configuration_utils import PretrainedConfig
+from transformerslora.configuration_utils import PretrainedConfig
 
 
 logger = logging.getLogger(__name__)
@@ -27,7 +27,7 @@ logger = logging.getLogger(__name__)
 
 class MaskedBertConfig(PretrainedConfig):
     """
-    A class replicating the `~transformers.BertConfig` with additional parameters for pruning/masking configuration.
+    A class replicating the `~transformerslora.BertConfig` with additional parameters for pruning/masking configuration.
     """
 
     model_type = "masked_bert"

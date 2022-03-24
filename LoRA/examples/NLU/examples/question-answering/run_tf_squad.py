@@ -24,7 +24,7 @@ from typing import Optional
 
 import tensorflow as tf
 
-from transformers import (
+from transformerslora import (
     AutoConfig,
     AutoTokenizer,
     HfArgumentParser,
@@ -33,8 +33,8 @@ from transformers import (
     TFTrainingArguments,
     squad_convert_examples_to_features,
 )
-from transformers.data.processors.squad import SquadV1Processor, SquadV2Processor
-from transformers.utils import logging as hf_logging
+from transformerslora.data.processors.squad import SquadV1Processor, SquadV2Processor
+from transformerslora.utils import logging as hf_logging
 
 
 hf_logging.set_verbosity_info()

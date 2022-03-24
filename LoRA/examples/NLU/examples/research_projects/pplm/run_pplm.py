@@ -34,8 +34,8 @@ import torch.nn.functional as F
 from tqdm import trange
 
 from pplm_classification_head import ClassificationHead
-from transformers import GPT2LMHeadModel, GPT2Tokenizer
-from transformers.file_utils import cached_path
+from transformerslora import GPT2LMHeadModel, GPT2Tokenizer
+from transformerslora.file_utils import cached_path
 
 
 PPLM_BOW = 1

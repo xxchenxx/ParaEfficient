@@ -12,7 +12,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-""" Finetuning a 🤗 Transformers model for sequence classification on GLUE."""
+""" Finetuning a 🤗 transformerslora model for sequence classification on GLUE."""
 import argparse
 import logging
 import math
@@ -24,9 +24,9 @@ from datasets import load_dataset, load_metric
 from torch.utils.data.dataloader import DataLoader
 from tqdm.auto import tqdm
 
-import transformers
+import transformerslora
 from accelerate import Accelerator
-from transformers import (
+from transformerslora import (
     AdamW,
     AutoConfig,
     AutoModelForSequenceClassification,
@@ -56,7 +56,7 @@ task_to_keys = {
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="Finetune a transformers model on a text classification task")
+    parser = argparse.ArgumentParser(description="Finetune a transformerslora model on a text classification task")
     parser.add_argument(
         "--task_name",
         type=str,
@@ -176,10 +176,10 @@ def main():
     logger.setLevel(logging.INFO if accelerator.is_local_main_process else logging.ERROR)
     if accelerator.is_local_main_process:
         datasets.utils.logging.set_verbosity_warning()
-        transformers.utils.logging.set_verbosity_info()
+        transformerslora.utils.logging.set_verbosity_info()
     else:
         datasets.utils.logging.set_verbosity_error()
-        transformers.utils.logging.set_verbosity_error()
+        transformerslora.utils.logging.set_verbosity_error()
 
     # If passed along, set the training seed now.
     if args.seed is not None:

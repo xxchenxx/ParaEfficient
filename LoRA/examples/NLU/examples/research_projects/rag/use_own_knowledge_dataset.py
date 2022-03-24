@@ -10,7 +10,7 @@ import torch
 from datasets import Features, Sequence, Value, load_dataset
 
 import faiss
-from transformers import (
+from transformerslora import (
     DPRContextEncoder,
     DPRContextEncoderTokenizerFast,
     HfArgumentParser,

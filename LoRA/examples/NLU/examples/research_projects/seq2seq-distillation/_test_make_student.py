@@ -2,9 +2,9 @@ import tempfile
 import unittest
 
 from make_student import create_student_by_copying_alternating_layers
-from transformers import AutoConfig
-from transformers.file_utils import cached_property
-from transformers.testing_utils import require_torch
+from transformerslora import AutoConfig
+from transformerslora.file_utils import cached_property
+from transformerslora.testing_utils import require_torch
 
 
 TINY_BART = "sshleifer/bart-tiny-random"

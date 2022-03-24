@@ -5,7 +5,7 @@ import torch
 from elasticsearch import Elasticsearch
 
 import faiss
-import transformers
+import transformerslora
 from eli5_utils import (
     embed_questions_for_retrieval,
     make_qa_s2s_model,
@@ -13,7 +13,7 @@ from eli5_utils import (
     query_es_index,
     query_qa_dense_index,
 )
-from transformers import AutoModel, AutoModelForSeq2SeqLM, AutoTokenizer
+from transformerslora import AutoModel, AutoModelForSeq2SeqLM, AutoTokenizer
 
 
 MODEL_TYPE = "bart"
@@ -110,7 +110,7 @@ def make_support(question, source="wiki40b", method="dense", n_results=10):
 @st.cache(
     hash_funcs={
         torch.Tensor: (lambda _: None),
-        transformers.models.bart.tokenization_bart.BartTokenizer: (lambda _: None),
+        transformerslora.models.bart.tokenization_bart.BartTokenizer: (lambda _: None),
     }
 )
 def answer_question(

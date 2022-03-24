@@ -32,7 +32,7 @@ from torchtext import datasets
 from tqdm import tqdm, trange
 
 from pplm_classification_head import ClassificationHead
-from transformers import GPT2LMHeadModel, GPT2Tokenizer
+from transformerslora import GPT2LMHeadModel, GPT2Tokenizer
 
 
 torch.manual_seed(0)

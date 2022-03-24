@@ -29,8 +29,8 @@ from torch.utils.data import DataLoader, RandomSampler, SequentialSampler
 from torch.utils.data.distributed import DistributedSampler
 from tqdm import tqdm, trange
 
-import transformers
-from transformers import (
+import transformerslora
+from transformerslora import (
     MODEL_FOR_QUESTION_ANSWERING_MAPPING,
     WEIGHTS_NAME,
     AdamW,
@@ -40,13 +40,13 @@ from transformers import (
     get_linear_schedule_with_warmup,
     squad_convert_examples_to_features,
 )
-from transformers.data.metrics.squad_metrics import (
+from transformerslora.data.metrics.squad_metrics import (
     compute_predictions_log_probs,
     compute_predictions_logits,
     squad_evaluate,
 )
-from transformers.data.processors.squad import SquadResult, SquadV1Processor, SquadV2Processor
-from transformers.trainer_utils import is_main_process
+from transformerslora.data.processors.squad import SquadResult, SquadV1Processor, SquadV2Processor
+from transformerslora.trainer_utils import is_main_process
 
 
 try:
@@ -202,7 +202,7 @@ def train(args, train_dataset, model, tokenizer):
                     )
 
             outputs = model(**inputs)
-            # model outputs are always tuple in transformers (see doc)
+            # model outputs are always tuple in transformerslora (see doc)
             loss = outputs[0]
 
             if args.n_gpu > 1:
@@ -714,11 +714,11 @@ def main():
         bool(args.local_rank != -1),
         args.fp16,
     )
-    # Set the verbosity to info of the Transformers logger (on main process only):
+    # Set the verbosity to info of the transformerslora logger (on main process only):
     if is_main_process(args.local_rank):
-        transformers.utils.logging.set_verbosity_info()
-        transformers.utils.logging.enable_default_handler()
-        transformers.utils.logging.enable_explicit_format()
+        transformerslora.utils.logging.set_verbosity_info()
+        transformerslora.utils.logging.enable_default_handler()
+        transformerslora.utils.logging.enable_explicit_format()
     # Set seed
     set_seed(args)
 

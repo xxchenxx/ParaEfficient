@@ -22,8 +22,8 @@ import sys
 from dataclasses import dataclass, field
 from typing import Optional
 
-import transformers
-from transformers import (
+import transformerslora
+from transformerslora import (
     AutoConfig,
     AutoModelForQuestionAnswering,
     AutoTokenizer,
@@ -31,9 +31,9 @@ from transformers import (
     HfArgumentParser,
     SquadDataset,
 )
-from transformers import SquadDataTrainingArguments as DataTrainingArguments
-from transformers import Trainer, TrainingArguments
-from transformers.trainer_utils import is_main_process
+from transformerslora import SquadDataTrainingArguments as DataTrainingArguments
+from transformerslora import Trainer, TrainingArguments
+from transformerslora.trainer_utils import is_main_process
 
 
 logger = logging.getLogger(__name__)
@@ -101,11 +101,11 @@ def main():
         bool(training_args.local_rank != -1),
         training_args.fp16,
     )
-    # Set the verbosity to info of the Transformers logger (on main process only):
+    # Set the verbosity to info of the transformerslora logger (on main process only):
     if is_main_process(training_args.local_rank):
-        transformers.utils.logging.set_verbosity_info()
-        transformers.utils.logging.enable_default_handler()
-        transformers.utils.logging.enable_explicit_format()
+        transformerslora.utils.logging.set_verbosity_info()
+        transformerslora.utils.logging.enable_default_handler()
+        transformerslora.utils.logging.enable_explicit_format()
     logger.info("Training/evaluation parameters %s", training_args)
 
     # Prepare Question-Answering task

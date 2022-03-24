@@ -25,7 +25,7 @@ import datasets
 import numpy as np
 import tensorflow as tf
 
-from transformers import (
+from transformerslora import (
     AutoConfig,
     AutoTokenizer,
     EvalPrediction,
@@ -35,7 +35,7 @@ from transformers import (
     TFTrainer,
     TFTrainingArguments,
 )
-from transformers.utils import logging as hf_logging
+from transformerslora.utils import logging as hf_logging
 
 
 hf_logging.set_verbosity_info()

@@ -9,7 +9,7 @@ import torch.nn as nn
 from packaging import version
 
 import soundfile as sf
-from transformers import (
+from transformerslora import (
     HfArgumentParser,
     Trainer,
     TrainingArguments,
@@ -82,9 +82,9 @@ class DataCollatorCTCWithPadding:
     """
     Data collator that will dynamically pad the inputs received.
     Args:
-        processor (:class:`~transformers.Wav2Vec2Processor`)
+        processor (:class:`~transformerslora.Wav2Vec2Processor`)
             The processor used for proccessing the data.
-        padding (:obj:`bool`, :obj:`str` or :class:`~transformers.tokenization_utils_base.PaddingStrategy`, `optional`, defaults to :obj:`True`):
+        padding (:obj:`bool`, :obj:`str` or :class:`~transformerslora.tokenization_utils_base.PaddingStrategy`, `optional`, defaults to :obj:`True`):
             Select a strategy to pad the returned sequences (according to the model's padding side and padding index)
             among:
             * :obj:`True` or :obj:`'longest'`: Pad to the longest sequence in the batch (or no padding if only a single

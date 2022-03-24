@@ -40,7 +40,7 @@ from flax.optim import Adam
 from flax.training import common_utils
 from flax.training.common_utils import get_metrics
 from jax.nn import log_softmax
-from transformers import (
+from transformerslora import (
     CONFIG_MAPPING,
     MODEL_FOR_MASKED_LM_MAPPING,
     AutoConfig,
@@ -184,7 +184,7 @@ class FlaxDataCollatorForLanguageModeling:
     are not all of the same length.
 
     Args:
-        tokenizer (:class:`~transformers.PreTrainedTokenizer` or :class:`~transformers.PreTrainedTokenizerFast`):
+        tokenizer (:class:`~transformerslora.PreTrainedTokenizer` or :class:`~transformerslora.PreTrainedTokenizerFast`):
             The tokenizer used for encoding the data.
         mlm (:obj:`bool`, `optional`, defaults to :obj:`True`):
             Whether or not to use masked language modeling. If set to :obj:`False`, the labels are the same as the
@@ -197,7 +197,7 @@ class FlaxDataCollatorForLanguageModeling:
 
         For best performance, this data collator should be used with a dataset having items that are dictionaries or
         BatchEncoding, with the :obj:`"special_tokens_mask"` key, as returned by a
-        :class:`~transformers.PreTrainedTokenizer` or a :class:`~transformers.PreTrainedTokenizerFast` with the
+        :class:`~transformerslora.PreTrainedTokenizer` or a :class:`~transformerslora.PreTrainedTokenizerFast` with the
         argument :obj:`return_special_tokens_mask=True`.
     """
 
@@ -462,7 +462,7 @@ if __name__ == "__main__":
         + f"distributed training: {bool(training_args.local_rank != -1)}, 16-bits training: {training_args.fp16}"
     )
 
-    # Set the verbosity to info of the Transformers logger (on main process only):
+    # Set the verbosity to info of the transformerslora logger (on main process only):
     logger.info("Training/evaluation parameters %s", training_args)
 
     # Set seed before initializing model.

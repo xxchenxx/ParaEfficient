@@ -23,8 +23,8 @@ from unittest.mock import patch
 
 import torch
 
-from transformers.file_utils import is_apex_available
-from transformers.testing_utils import TestCasePlus, get_gpu_count, slow, torch_device
+from transformerslora.file_utils import is_apex_available
+from transformerslora.testing_utils import TestCasePlus, get_gpu_count, slow, torch_device
 
 
 SRC_DIRS = [

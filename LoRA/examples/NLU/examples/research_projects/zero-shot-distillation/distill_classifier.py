@@ -9,7 +9,7 @@ from datasets import Dataset
 from torch import nn
 from tqdm.auto import tqdm
 
-from transformers import (
+from transformerslora import (
     AutoModelForSequenceClassification,
     AutoTokenizer,
     HfArgumentParser,
@@ -18,7 +18,7 @@ from transformers import (
     set_seed,
     utils,
 )
-from transformers.trainer_utils import get_last_checkpoint, is_main_process
+from transformerslora.trainer_utils import get_last_checkpoint, is_main_process
 
 
 DESCRIPTION = """
@@ -256,7 +256,7 @@ def main():
         f"Process rank: {training_args.local_rank}, device: {training_args.device}, n_gpu: {training_args.n_gpu}"
         + f"distributed training: {bool(training_args.local_rank != -1)}, 16-bits training: {training_args.fp16}"
     )
-    # Set the verbosity to info of the Transformers logger (on main process only):
+    # Set the verbosity to info of the transformerslora logger (on main process only):
     if is_main_process(training_args.local_rank):
         utils.logging.set_verbosity_info()
         utils.logging.enable_default_handler()

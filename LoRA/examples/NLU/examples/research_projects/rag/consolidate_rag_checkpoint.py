@@ -5,7 +5,7 @@ A script creating a RAG checkpoint from a generator and a question encoder check
 import argparse
 from pathlib import Path
 
-from transformers import AutoConfig, AutoTokenizer, RagConfig, RagSequenceForGeneration, RagTokenForGeneration
+from transformerslora import AutoConfig, AutoTokenizer, RagConfig, RagSequenceForGeneration, RagTokenForGeneration
 
 
 def consolidate(

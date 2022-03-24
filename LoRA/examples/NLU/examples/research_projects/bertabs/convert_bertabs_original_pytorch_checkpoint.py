@@ -27,7 +27,7 @@ import torch
 
 from model_bertabs import BertAbsSummarizer
 from models.model_builder import AbsSummarizer  # The authors' implementation
-from transformers import BertTokenizer
+from transformerslora import BertTokenizer
 
 
 logging.basicConfig(level=logging.INFO)

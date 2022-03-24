@@ -17,7 +17,7 @@ from pytorch_lightning.accelerators.ddp_accelerator import DDPAccelerator
 from pytorch_lightning.cluster_environments import TorchElasticEnvironment
 from torch.utils.data import DataLoader
 
-from transformers import (
+from transformerslora import (
     AutoConfig,
     AutoTokenizer,
     BartForConditionalGeneration,
@@ -28,8 +28,8 @@ from transformers import (
     RagTokenizer,
     T5ForConditionalGeneration,
 )
-from transformers import logging as transformers_logging
-from transformers.integrations import is_ray_available
+from transformerslora import logging as transformers_logging
+from transformerslora.integrations import is_ray_available
 
 
 if is_ray_available():

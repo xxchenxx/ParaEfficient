@@ -23,8 +23,8 @@ from typing import Dict, List, Optional
 import numpy as np
 import torch
 
-import transformers
-from transformers import (
+import transformerslora
+from transformerslora import (
     AutoConfig,
     AutoModelForSequenceClassification,
     AutoTokenizer,
@@ -34,7 +34,7 @@ from transformers import (
     default_data_collator,
     set_seed,
 )
-from transformers.trainer_utils import is_main_process
+from transformerslora.trainer_utils import is_main_process
 from utils_hans import HansDataset, InputFeatures, hans_processors, hans_tasks_num_labels
 
 
@@ -127,11 +127,11 @@ def main():
         bool(training_args.local_rank != -1),
         training_args.fp16,
     )
-    # Set the verbosity to info of the Transformers logger (on main process only):
+    # Set the verbosity to info of the transformerslora logger (on main process only):
     if is_main_process(training_args.local_rank):
-        transformers.utils.logging.set_verbosity_info()
-        transformers.utils.logging.enable_default_handler()
-        transformers.utils.logging.enable_explicit_format()
+        transformerslora.utils.logging.set_verbosity_info()
+        transformerslora.utils.logging.enable_default_handler()
+        transformerslora.utils.logging.enable_explicit_format()
     logger.info("Training/evaluation parameters %s", training_args)
 
     # Set seed

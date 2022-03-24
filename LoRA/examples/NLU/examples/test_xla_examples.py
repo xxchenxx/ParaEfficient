@@ -20,7 +20,7 @@ import unittest
 from time import time
 from unittest.mock import patch
 
-from transformers.testing_utils import require_torch_tpu
+from transformerslora.testing_utils import require_torch_tpu
 
 
 logging.basicConfig(level=logging.DEBUG)

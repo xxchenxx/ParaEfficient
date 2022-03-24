@@ -27,8 +27,8 @@ from typing import Optional
 import numpy as np
 from datasets import load_dataset, load_metric
 
-import transformers
-from transformers import (
+import transformerslora
+from transformerslora import (
     AutoConfig,
     AutoModelForSequenceClassification,
     AutoTokenizer,
@@ -41,11 +41,11 @@ from transformers import (
     default_data_collator,
     set_seed,
 )
-from transformers.trainer_utils import get_last_checkpoint, is_main_process
-from transformers.utils import check_min_version
+from transformerslora.trainer_utils import get_last_checkpoint, is_main_process
+from transformerslora.utils import check_min_version
 
 
-# Will error if the minimal version of Transformers is not installed. Remove at your own risks.
+# Will error if the minimal version of transformerslora is not installed. Remove at your own risks.
 check_min_version("4.4.0")
 
 task_to_keys = {
@@ -263,11 +263,11 @@ def main():
         f"Process rank: {training_args.local_rank}, device: {training_args.device}, n_gpu: {training_args.n_gpu}"
         + f"distributed training: {bool(training_args.local_rank != -1)}, 16-bits training: {training_args.fp16}"
     )
-    # Set the verbosity to info of the Transformers logger (on main process only):
+    # Set the verbosity to info of the transformerslora logger (on main process only):
     if is_main_process(training_args.local_rank):
-        transformers.utils.logging.set_verbosity_info()
-        transformers.utils.logging.enable_default_handler()
-        transformers.utils.logging.enable_explicit_format()
+        transformerslora.utils.logging.set_verbosity_info()
+        transformerslora.utils.logging.enable_default_handler()
+        transformerslora.utils.logging.enable_explicit_format()
     logger.info(f"Training/evaluation parameters {training_args}")
 
     # Set seed before initializing model.

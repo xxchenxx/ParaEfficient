@@ -20,7 +20,7 @@ import argparse
 
 import torch
 
-from transformers import BertForMaskedLM
+from transformerslora import BertForMaskedLM
 
 
 if __name__ == "__main__":

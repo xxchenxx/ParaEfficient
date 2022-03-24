@@ -17,8 +17,8 @@ import os
 import sys
 import unittest
 
-from transformers.integrations import is_deepspeed_available
-from transformers.testing_utils import (
+from transformerslora.integrations import is_deepspeed_available
+from transformerslora.testing_utils import (
     CaptureStd,
     TestCasePlus,
     execute_subprocess_async,
@@ -28,7 +28,7 @@ from transformers.testing_utils import (
     require_torch_multi_gpu,
     slow,
 )
-from transformers.trainer_utils import set_seed
+from transformerslora.trainer_utils import set_seed
 
 
 bindir = os.path.abspath(os.path.dirname(__file__))

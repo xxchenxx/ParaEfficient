@@ -30,8 +30,8 @@ from torch.utils.data import DataLoader, SequentialSampler, Subset
 from torch.utils.data.distributed import DistributedSampler
 from tqdm import tqdm
 
-import transformers
-from transformers import (
+import transformerslora
+from transformerslora import (
     AutoConfig,
     AutoModelForSequenceClassification,
     AutoTokenizer,
@@ -42,7 +42,7 @@ from transformers import (
     glue_processors,
     set_seed,
 )
-from transformers.trainer_utils import is_main_process
+from transformerslora.trainer_utils import is_main_process
 
 
 logger = logging.getLogger(__name__)
@@ -370,11 +370,11 @@ def main():
     # Setup logging
     logging.basicConfig(level=logging.INFO if args.local_rank in [-1, 0] else logging.WARN)
     logger.info("device: {} n_gpu: {}, distributed: {}".format(args.device, args.n_gpu, bool(args.local_rank != -1)))
-    # Set the verbosity to info of the Transformers logger (on main process only):
+    # Set the verbosity to info of the transformerslora logger (on main process only):
     if is_main_process(args.local_rank):
-        transformers.utils.logging.set_verbosity_info()
-        transformers.utils.logging.enable_default_handler()
-        transformers.utils.logging.enable_explicit_format()
+        transformerslora.utils.logging.set_verbosity_info()
+        transformerslora.utils.logging.enable_default_handler()
+        transformerslora.utils.logging.enable_explicit_format()
 
     # Set seeds
     set_seed(args.seed)

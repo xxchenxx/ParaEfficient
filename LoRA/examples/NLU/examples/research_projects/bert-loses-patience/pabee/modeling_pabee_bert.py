@@ -22,8 +22,8 @@ import torch
 from torch import nn
 from torch.nn import CrossEntropyLoss, MSELoss
 
-from transformers.file_utils import add_start_docstrings, add_start_docstrings_to_model_forward
-from transformers.models.bert.modeling_bert import (
+from transformerslora.file_utils import add_start_docstrings, add_start_docstrings_to_model_forward
+from transformerslora.models.bert.modeling_bert import (
     BERT_INPUTS_DOCSTRING,
     BERT_START_DOCSTRING,
     BertEncoder,
@@ -109,7 +109,7 @@ class BertModelWithPabee(BertModel):
     ):
         r"""
         Return:
-            :obj:`tuple(torch.FloatTensor)` comprising various elements depending on the configuration (:class:`~transformers.BertConfig`) and inputs:
+            :obj:`tuple(torch.FloatTensor)` comprising various elements depending on the configuration (:class:`~transformerslora.BertConfig`) and inputs:
             last_hidden_state (:obj:`torch.FloatTensor` of shape :obj:`(batch_size, sequence_length, hidden_size)`):
                 Sequence of hidden-states at the output of the last layer of the model.
             pooler_output (:obj:`torch.FloatTensor`: of shape :obj:`(batch_size, hidden_size)`):
@@ -273,7 +273,7 @@ class BertForSequenceClassificationWithPabee(BertPreTrainedModel):
                 If :obj:`config.num_labels > 1` a classification loss is computed (Cross-Entropy).
 
         Returns:
-            :obj:`tuple(torch.FloatTensor)` comprising various elements depending on the configuration (:class:`~transformers.BertConfig`) and inputs:
+            :obj:`tuple(torch.FloatTensor)` comprising various elements depending on the configuration (:class:`~transformerslora.BertConfig`) and inputs:
             loss (:obj:`torch.FloatTensor` of shape :obj:`(1,)`, `optional`, returned when :obj:`label` is provided):
                 Classification (or regression if config.num_labels==1) loss.
             logits (:obj:`torch.FloatTensor` of shape :obj:`(batch_size, config.num_labels)`):
@@ -292,7 +292,7 @@ class BertForSequenceClassificationWithPabee(BertPreTrainedModel):
 
         Examples::
 
-            from transformers import BertTokenizer, BertForSequenceClassification
+            from transformerslora import BertTokenizer, BertForSequenceClassification
             from pabee import BertForSequenceClassificationWithPabee
             import torch
 

@@ -13,7 +13,7 @@ import torch
 from torch.utils.data import DataLoader, RandomSampler, TensorDataset
 from tqdm import tqdm
 
-from transformers import GPT2LMHeadModel
+from transformerslora import GPT2LMHeadModel
 
 
 logger = logging.getLogger(__name__)

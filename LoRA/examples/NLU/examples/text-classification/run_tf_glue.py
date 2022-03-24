@@ -26,7 +26,7 @@ import numpy as np
 import tensorflow as tf
 import tensorflow_datasets as tfds
 
-from transformers import (
+from transformerslora import (
     AutoConfig,
     AutoTokenizer,
     EvalPrediction,
@@ -41,7 +41,7 @@ from transformers import (
     glue_processors,
     glue_tasks_num_labels,
 )
-from transformers.utils import logging as hf_logging
+from transformerslora.utils import logging as hf_logging
 
 
 hf_logging.set_verbosity_info()

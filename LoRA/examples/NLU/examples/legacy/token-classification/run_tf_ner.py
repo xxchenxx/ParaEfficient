@@ -25,7 +25,7 @@ from typing import Dict, List, Optional, Tuple
 import numpy as np
 from seqeval.metrics import classification_report, f1_score, precision_score, recall_score
 
-from transformers import (
+from transformerslora import (
     AutoConfig,
     AutoTokenizer,
     EvalPrediction,
@@ -34,7 +34,7 @@ from transformers import (
     TFTrainer,
     TFTrainingArguments,
 )
-from transformers.utils import logging as hf_logging
+from transformerslora.utils import logging as hf_logging
 from utils_ner import Split, TFTokenClassificationDataset, TokenClassificationTask
 
 

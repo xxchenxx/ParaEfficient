@@ -39,7 +39,7 @@ import torch
 from torch.utils.data import DataLoader, RandomSampler, SequentialSampler, TensorDataset
 from tqdm import tqdm, trange
 
-from transformers import (
+from transformerslora import (
     CONFIG_NAME,
     WEIGHTS_NAME,
     AdamW,

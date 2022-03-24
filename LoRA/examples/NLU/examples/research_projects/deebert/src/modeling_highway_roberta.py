@@ -3,9 +3,9 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 import torch.nn as nn
 from torch.nn import CrossEntropyLoss, MSELoss
 
-from transformers import RobertaConfig
-from transformers.file_utils import add_start_docstrings, add_start_docstrings_to_model_forward
-from transformers.models.roberta.modeling_roberta import (
+from transformerslora import RobertaConfig
+from transformerslora.file_utils import add_start_docstrings, add_start_docstrings_to_model_forward
+from transformerslora.models.roberta.modeling_roberta import (
     ROBERTA_INPUTS_DOCSTRING,
     ROBERTA_START_DOCSTRING,
     RobertaEmbeddings,
@@ -70,7 +70,7 @@ class DeeRobertaForSequenceClassification(BertPreTrainedModel):
                 If :obj:`config.num_labels > 1` a classification loss is computed (Cross-Entropy).
 
         Returns:
-            :obj:`tuple(torch.FloatTensor)` comprising various elements depending on the configuration (:class:`~transformers.RobertaConfig`) and inputs:
+            :obj:`tuple(torch.FloatTensor)` comprising various elements depending on the configuration (:class:`~transformerslora.RobertaConfig`) and inputs:
             loss (:obj:`torch.FloatTensor` of shape :obj:`(1,)`, `optional`, returned when :obj:`label` is provided):
                 Classification (or regression if config.num_labels==1) loss.
             logits (:obj:`torch.FloatTensor` of shape :obj:`(batch_size, config.num_labels)`):

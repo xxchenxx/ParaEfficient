@@ -15,7 +15,7 @@ from torch.utils.data import DataLoader, Dataset, RandomSampler, SequentialSampl
 from tqdm import tqdm
 
 import faiss  # noqa: F401
-from transformers import AdamW, AutoModel, AutoModelForSeq2SeqLM, AutoTokenizer, get_linear_schedule_with_warmup
+from transformerslora import AdamW, AutoModel, AutoModelForSeq2SeqLM, AutoTokenizer, get_linear_schedule_with_warmup
 
 
 pd.set_option("display.max_colwidth", None)

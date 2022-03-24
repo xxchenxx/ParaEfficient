@@ -7,7 +7,7 @@ import psutil
 import torch
 import torch.distributed as dist
 
-from transformers import RagRetriever
+from transformerslora import RagRetriever
 
 
 logger = logging.getLogger(__name__)
@@ -20,14 +20,14 @@ class RagPyTorchDistributedRetriever(RagRetriever):
     in cpu memory. The index will also work well in a non-distributed setup.
 
     Args:
-        config (:class:`~transformers.RagConfig`):
+        config (:class:`~transformerslora.RagConfig`):
             The configuration of the RAG model this Retriever is used with. Contains parameters indicating which ``Index`` to build.
-        question_encoder_tokenizer (:class:`~transformers.PretrainedTokenizer`):
+        question_encoder_tokenizer (:class:`~transformerslora.PretrainedTokenizer`):
             The tokenizer that was used to tokenize the question.
             It is used to decode the question and then use the generator_tokenizer.
-        generator_tokenizer (:class:`~transformers.PretrainedTokenizer`):
+        generator_tokenizer (:class:`~transformerslora.PretrainedTokenizer`):
             The tokenizer used for the generator part of the RagModel.
-        index (:class:`~transformers.models.rag.retrieval_rag.Index`, optional, defaults to the one defined by the configuration):
+        index (:class:`~transformerslora.models.rag.retrieval_rag.Index`, optional, defaults to the one defined by the configuration):
             If specified, use this index instead of the one built using the configuration
     """
 

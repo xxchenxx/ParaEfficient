@@ -1,4 +1,4 @@
-transformers
+transformerslora
 
 gitpython==3.0.2
 tensorboard>=1.14.0

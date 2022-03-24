@@ -1,6 +1,6 @@
 import sys
 
-from transformers import AutoTokenizer
+from transformerslora import AutoTokenizer
 
 
 dataset = sys.argv[1]

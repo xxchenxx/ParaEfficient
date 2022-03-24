@@ -22,11 +22,11 @@ import jax
 import jax.numpy as jnp
 from jax.random import PRNGKey
 from modeling_flax_performer_utils import make_fast_softmax_attention
-from transformers.file_utils import add_start_docstrings
-from transformers.modeling_flax_utils import ACT2FN
-from transformers.models.bert.configuration_bert import BertConfig
-from transformers.models.bert.modeling_flax_bert import FlaxBertOnlyMLMHead, FlaxBertPreTrainedModel
-from transformers.utils import logging
+from transformerslora.file_utils import add_start_docstrings
+from transformerslora.modeling_flax_utils import ACT2FN
+from transformerslora.models.bert.configuration_bert import BertConfig
+from transformerslora.models.bert.modeling_flax_bert import FlaxBertOnlyMLMHead, FlaxBertPreTrainedModel
+from transformerslora.utils import logging
 
 
 logger = logging.get_logger(__name__)
@@ -36,7 +36,7 @@ _TOKENIZER_FOR_DOC = "BertTokenizer"
 
 BERT_START_DOCSTRING = r"""
 
-    This model inherits from :class:`~transformers.PreTrainedModel`. Check the superclass documentation for the generic
+    This model inherits from :class:`~transformerslora.PreTrainedModel`. Check the superclass documentation for the generic
     methods the library implements for all its model (such as downloading or saving, resizing the input embeddings,
     pruning heads etc.)
 
@@ -45,9 +45,9 @@ BERT_START_DOCSTRING = r"""
     general usage and behavior.
 
     Parameters:
-        config (:class:`~transformers.BertConfig`): Model configuration class with all the parameters of the model.
+        config (:class:`~transformerslora.BertConfig`): Model configuration class with all the parameters of the model.
             Initializing with a config file does not load the weights associated with the model, only the
-            configuration. Check out the :meth:`~transformers.PreTrainedModel.from_pretrained` method to load the model
+            configuration. Check out the :meth:`~transformerslora.PreTrainedModel.from_pretrained` method to load the model
             weights.
 """
 
@@ -56,8 +56,8 @@ BERT_INPUTS_DOCSTRING = r"""
         input_ids (:obj:`torch.LongTensor` of shape :obj:`({0})`):
             Indices of input sequence tokens in the vocabulary.
 
-            Indices can be obtained using :class:`~transformers.BertTokenizer`. See
-            :meth:`transformers.PreTrainedTokenizer.encode` and :meth:`transformers.PreTrainedTokenizer.__call__` for
+            Indices can be obtained using :class:`~transformerslora.BertTokenizer`. See
+            :meth:`transformerslora.PreTrainedTokenizer.encode` and :meth:`transformerslora.PreTrainedTokenizer.__call__` for
             details.
 
             `What are input IDs? <../glossary.html#input-ids>`__
@@ -98,7 +98,7 @@ BERT_INPUTS_DOCSTRING = r"""
             Whether or not to return the hidden states of all layers. See ``hidden_states`` under returned tensors for
             more detail.
         return_dict (:obj:`bool`, `optional`):
-            Whether or not to return a :class:`~transformers.file_utils.ModelOutput` instead of a plain tuple.
+            Whether or not to return a :class:`~transformerslora.file_utils.ModelOutput` instead of a plain tuple.
 """
 
 

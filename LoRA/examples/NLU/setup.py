@@ -64,7 +64,7 @@ from setuptools import find_packages, setup
 
 
 # Remove stale transformers.egg-info directory to avoid https://github.com/pypa/pip/issues/5466
-stale_egg_info = Path(__file__).parent / "transformers.egg-info"
+stale_egg_info = Path(__file__).parent / "transformerslora.egg-info"
 if stale_egg_info.exists():
     print(
         (
@@ -96,8 +96,6 @@ _deps = [
     "importlib_metadata",
     "ipadic>=1.0.0,<2.0",
     "isort>=5.5.4",
-    "jax>=0.2.8",
-    "jaxlib>=0.1.59",
     "keras2onnx",
     "numpy>=1.17",
     "onnxconverter-common",
@@ -124,8 +122,6 @@ _deps = [
     "sphinx-rtd-theme==0.4.3",  # sphinx-rtd-theme==0.5.0 introduced big changes in the style.
     "sphinx==3.2.1",
     "starlette",
-    "tensorflow-cpu>=2.3",
-    "tensorflow>=2.3",
     "timeout-decorator",
     "tokenizers>=0.10.1,<0.11",
     "torch>=1.0",
@@ -206,17 +202,12 @@ extras = {}
 extras["ja"] = deps_list("fugashi", "ipadic", "unidic_lite", "unidic")
 extras["sklearn"] = deps_list("scikit-learn")
 
-extras["tf"] = deps_list("tensorflow", "onnxconverter-common", "keras2onnx")
-extras["tf-cpu"] = deps_list("tensorflow-cpu", "onnxconverter-common", "keras2onnx")
-
 extras["torch"] = deps_list("torch")
 
 if os.name == "nt":  # windows
     extras["retrieval"] = deps_list("datasets")  # faiss is not supported on windows
-    extras["flax"] = []  # jax is not supported on windows
 else:
     extras["retrieval"] = deps_list("faiss-cpu", "datasets")
-    extras["flax"] = deps_list("jax", "jaxlib", "flax")
 
 extras["tokenizers"] = deps_list("tokenizers")
 extras["onnxruntime"] = deps_list("onnxruntime", "onnxruntime-tools")
@@ -235,7 +226,7 @@ extras["testing"] = (
 extras["docs"] = deps_list("recommonmark", "sphinx", "sphinx-markdown-tables", "sphinx-rtd-theme", "sphinx-copybutton")
 extras["quality"] = deps_list("black", "isort", "flake8")
 
-extras["all"] = extras["tf"] + extras["torch"] + extras["flax"] + extras["sentencepiece"] + extras["tokenizers"]
+extras["all"] = extras["torch"] + extras["sentencepiece"] + extras["tokenizers"]
 
 extras["dev"] = (
     extras["all"]
@@ -277,7 +268,7 @@ install_requires = [
 ]
 
 setup(
-    name="transformers",
+    name="transformerslora",
     version="4.4.2",  # expected format is one of x.y.z.dev0, or x.y.z.rc1 or x.y.z (no to dashes, yes to dots)
     author="Thomas Wolf, Lysandre Debut, Victor Sanh, Julien Chaumond, Sam Shleifer, Patrick von Platen, Sylvain Gugger, Google AI Language Team Authors, Open AI team Authors, Facebook AI Authors, Carnegie Mellon University Authors",
     author_email="thomas@huggingface.co",
