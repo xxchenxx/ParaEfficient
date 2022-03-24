@@ -19,6 +19,8 @@ import random
 import warnings
 from typing import Optional, Tuple
 
+import loralib as lora
+
 import torch
 import torch.nn.functional as F
 import torch.utils.checkpoint
@@ -134,6 +136,9 @@ class BartAttention(nn.Module):
         dropout: float = 0.0,
         is_decoder: bool = False,
         bias: bool = True,
+        apply_lora: bool = False,
+        lora_r: int = 0,
+        lora_alpha: int = 0,
     ):
         super().__init__()
         self.embed_dim = embed_dim
@@ -145,10 +150,15 @@ class BartAttention(nn.Module):
         ), f"embed_dim must be divisible by num_heads (got `embed_dim`: {self.embed_dim} and `num_heads`: {num_heads})."
         self.scaling = self.head_dim ** -0.5
         self.is_decoder = is_decoder
-
+        if apply_lora:
+            self.q_proj = lora.Linear(embed_dim, embed_dim, lora_r, lora_alpha=lora_alpha, bias=bias)
+        else:
+            self.q_proj = nn.Linear(embed_dim, embed_dim, bias=bias)
         self.k_proj = nn.Linear(embed_dim, embed_dim, bias=bias)
-        self.v_proj = nn.Linear(embed_dim, embed_dim, bias=bias)
-        self.q_proj = nn.Linear(embed_dim, embed_dim, bias=bias)
+        if apply_lora:
+            self.v_proj = lora.Linear(embed_dim, embed_dim, lora_r, lora_alpha=lora_alpha, bias=bias)
+        else:
+            self.v_proj = nn.Linear(embed_dim, embed_dim, bias=bias)
         self.out_proj = nn.Linear(embed_dim, embed_dim, bias=bias)
 
     def _shape(self, tensor: torch.Tensor, seq_len: int, bsz: int):
@@ -274,6 +284,9 @@ class BartEncoderLayer(nn.Module):
             embed_dim=self.embed_dim,
             num_heads=config.encoder_attention_heads,
             dropout=config.attention_dropout,
+            apply_lora=config.apply_lora,
+            lora_r=config.lora_r,
+            lora_alpha=config.lora_alpha
         )
         self.self_attn_layer_norm = nn.LayerNorm(self.embed_dim)
         self.dropout = config.dropout

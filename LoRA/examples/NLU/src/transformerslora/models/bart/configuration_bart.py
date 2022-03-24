@@ -136,6 +136,9 @@ class BartConfig(PretrainedConfig):
         is_encoder_decoder=True,
         decoder_start_token_id=2,
         forced_eos_token_id=2,
+        apply_lora=False,
+        lora_r=None,
+        lora_alpha=None,
         **kwargs
     ):
         super().__init__(
@@ -170,6 +173,9 @@ class BartConfig(PretrainedConfig):
         self.num_hidden_layers = encoder_layers
         self.gradient_checkpointing = gradient_checkpointing
         self.scale_embedding = scale_embedding  # scale factor will be sqrt(d_model) if True
+        self.apply_lora = apply_lora
+        self.lora_r = lora_r
+        self.lora_alpha = lora_alpha
 
         # ensure backward compatibilty for BART CNN models
         if self.forced_bos_token_id is None and kwargs.get("force_bos_token_to_be_generated", False):

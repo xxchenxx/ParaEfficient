@@ -408,7 +408,8 @@ def main():
 
     if len(trainable_params) > 0:
         for name, param in model.named_parameters():
-            if name.startswith('deberta') or name.startswith('roberta'):
+            print(name)
+            if name.startswith('deberta') or name.startswith('roberta') or name.startswith("model"):
                 param.requires_grad = False
                 for trainable_param in trainable_params:
                     if trainable_param in name:
